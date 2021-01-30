@@ -1,0 +1,23 @@
+{
+  "private": true,
+  "scripts": {
+    "watch": "dotnet fable watch src --run webpack-dev-server",
+    "build": "dotnet fable ./src/App.fsproj --run webpack --mode=production --no-progress"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "autoprefixer": "^10.1.0",
+    "css-loader": "^5.0.1",
+    "html-webpack-plugin": "^4.5.0",
+    "mini-css-extract-plugin": "^1.3.3",
+    "postcss": "^8.2.1",
+    "postcss-loader": "^4.1.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "style-loader": "^2.0.0",
+    "tailwindcss": "^2.0.2",
+    "webpack": "^4.25.1",
+    "webpack-cli": "3",
+    "webpack-dev-server": "^3.1.10"
+  }
+}
