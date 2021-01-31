@@ -13,13 +13,22 @@ export function anchor(dispatch, label) {
     }, label);
 }
 
+export const bild = react.createElement("div", {
+    className: "w-64 m-4 p-2 flex flex-col items-center floating-action-button cursor-pointer bg-white",
+}, react.createElement("img", {
+    className: "w-64 h-64 object-cover",
+    src: "https://bndx.info/wp-content/uploads/2020/09/heimeshoff_it-1.jpg",
+}), react.createElement("div", {
+    className: "text-center",
+}, "Demns "));
+
 export function links(model, dispatch) {
     return singleton(anchor(dispatch, "Kontakt"));
 }
 
 export function brand_logo(dispatch) {
     return react.createElement("div", {
-        className: "font-serif text-2xl font-bold text-gray-800 p-4 ml-4 cursor-pointer border-b-2 border-transparent hover:border-red-700",
+        className: "font-sans text-2xl font-bold text-gray-800 p-4 ml-4 cursor-pointer border-b-2 border-transparent hover:border-red-700",
         onClick: (_arg1) => {
             dispatch(new Msg(2, new Page(0)));
         },

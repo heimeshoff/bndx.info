@@ -15,6 +15,7 @@ type Page =
 type Model = {
   menu_open: bool
   currentPage: Page
+  album: string option
 }
 
 
@@ -24,3 +25,5 @@ type Msg =
   | Navigate_to of Page
   | ScrollTo of string
   | OnLogError of exn
+  | Album_anzeigen of string
+  | Album_schliessen

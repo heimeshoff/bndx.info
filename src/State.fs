@@ -12,6 +12,7 @@ module State =
     {
         menu_open = false
         currentPage = Landingpage
+        album = None
     }, Cmd.none
 
 
@@ -21,7 +22,8 @@ module State =
         { model with menu_open = not model.menu_open }, Cmd.none
         
     | Clicked_Anywhere ->
-        { model with menu_open = false }, Cmd.none
+        { model with
+            menu_open = false }, Cmd.none
         
     | OnLogError e ->
         model, Cmd.none
@@ -31,3 +33,9 @@ module State =
     
     | Navigate_to p ->
         { model with currentPage = p ; menu_open = false }, Cmd.ofMsg (ScrollTo "top")
+
+    | Album_anzeigen album ->
+        { model with album = Some album }, Cmd.none
+
+    | Album_schliessen ->
+        { model with album = None }, Cmd.none

@@ -7,14 +7,15 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: [ 'Crimson Text', 'Roboto'],
-        serif: [ 'Unica One' ],
+        sans: [ 'Unica One', 'Roboto'],
+        serif: [ 'Crimson Text' ],
       }
     },
   },
   variants: {
     extend: {
       borderWidth: ['hover', 'focus'],
+      translate: ['hover', 'group-hover'],
     },
   },
   plugins: [],

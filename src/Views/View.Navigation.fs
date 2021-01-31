@@ -6,18 +6,29 @@ open Fable.React.Props
 
 open Bndx
 
+
 let anchor dispatch (label:String) =
   div [ Class "p-4 text-2xl w-full lg:w-auto border-b-2 border-transparent hover:border-red-700 cursor-pointer"
         OnClick (fun e -> e.stopPropagation() ; ScrollTo (label.ToLower()) |> dispatch) ]
     [ str label ]
     
 
+let bild = 
+  div [ Class "w-64 m-4 p-2 flex flex-col items-center floating-action-button cursor-pointer bg-white" ] 
+    [ 
+      img 
+        [ Class "w-64 h-64 object-cover" 
+          Src "https://bndx.info/wp-content/uploads/2020/09/heimeshoff_it-1.jpg" ]
+      div [Class "text-center"]
+        [ "Demns " |> ofString ] ]
+
+
 let links model dispatch =
   [ "Kontakt" |> anchor dispatch  ]
 
 
 let brand_logo dispatch = 
-  div [ Class "font-serif text-2xl font-bold text-gray-800 p-4 ml-4 cursor-pointer border-b-2 border-transparent hover:border-red-700"
+  div [ Class "font-sans text-2xl font-bold text-gray-800 p-4 ml-4 cursor-pointer border-b-2 border-transparent hover:border-red-700"
         OnClick (fun _ -> Navigate_to Landingpage |> dispatch) ]
     [ str "BNDX"
       span [ Class "ml-2 font-normal" ]
