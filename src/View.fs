@@ -39,7 +39,7 @@ module View =
         img [ Class "absolute w-full h-full object-cover"
               Src "img/hero.jpg" ]
         div [ Class "absolute inset-0 bg-purple-700 bg-opacity-25" ] []
-        div [ Class "absolute bottom-0 right-0 mb-28 mr-4 sm:mr-8 sm:mb-32 md:mr-12 lg:mr-32 lg:mb-48 font-serif text-white text-shadow sm:w-2/3 md:w-1/2" ]
+        div [ Class "absolute bottom-0 right-0 mb-28 mr-4 sm:mr-8 sm:mb-32 md:mr-12 lg:mr-32 lg:mb-48 font-serif text-white text-shadow w-2/3 md:w-1/2" ]
           [
             ["Illustrator, der" |> ofString ] |> div [ Class "font-bold text-4xl mb-4 text-right" ]
             ["Substantiv, maskulin; ein Künstler, der einen Text mit Illustrationen ausgestaltet." |> ofString ] |> div [ Class "text-xl mb-1 leading-tight text-right" ]

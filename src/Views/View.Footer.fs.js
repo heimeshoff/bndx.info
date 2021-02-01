@@ -1,6 +1,6 @@
 import * as react from "react";
 
-export function footer(model, dispatch) {
+export function footer(dispatch, model) {
     return react.createElement("div", {
         className: "w-full pt-24 pb-12 flex flex-col items-center justify-center",
     }, react.createElement("a", {
