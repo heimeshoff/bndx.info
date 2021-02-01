@@ -10,8 +10,20 @@
 }
 
 .glass-dense {
-  backdrop-filter: blur( 7.0px );
-  -webkit-backdrop-filter: blur( 7.0px );
+  backdrop-filter: blur( 10.0px );
+  -webkit-backdrop-filter: blur( 10.0px );
+}
+
+.font-sans {
+  text-transform: uppercase;
+}
+
+.font-serif {
+  text-transform: lowercase;
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 3px rgb(0 0 0 / 30%);
 }
 
 /* High performance box-shadow animation using pseudo elements to prevent redrawing */

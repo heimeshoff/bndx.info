@@ -8,10 +8,9 @@
     </Content>
     <Content Include="style.css" />
     <Compile Include="Types.fs" />
-    <Compile Include="Views/View.Footer.fs" />
-    <Compile Include="Views/View.Hero.fs" />
-    <Compile Include="Views/View.Impressum.fs" />
     <Compile Include="Views/View.Navigation.fs" />
+    <Compile Include="Views/View.Impressum.fs" />
+    <Compile Include="Views/View.Footer.fs" />
     <Compile Include="State.fs" />
     <Compile Include="View.fs" />
     <Compile Include="App.fs" />

@@ -28,7 +28,7 @@ let links model dispatch =
 
 
 let brand_logo dispatch = 
-  div [ Class "font-sans text-2xl font-bold text-gray-800 p-4 ml-4 cursor-pointer border-b-2 border-transparent hover:border-red-700"
+  div [ Class "text-2xl font-bold text-gray-800 p-4 ml-4 cursor-pointer border-b-2 border-transparent hover:border-red-700"
         OnClick (fun _ -> Navigate_to Landingpage |> dispatch) ]
     [ str "BNDX"
       span [ Class "ml-2 font-normal" ]
@@ -69,8 +69,8 @@ let desktop_model dispatch model =
     ]
 
 
-let navbar (model:Model) dispatch =
-  div [ Class "z-50 fixed w-full glass bg-white shadow-lg" ]
+let navbar dispatch (model:Model) =
+  div [ Class "z-50 fixed w-full glass-dense bg-white bg-opacity-50 shadow-lg" ]
     [ 
       mobile_menu dispatch model 
       desktop_model dispatch model 

@@ -28,7 +28,7 @@ export function links(model, dispatch) {
 
 export function brand_logo(dispatch) {
     return react.createElement("div", {
-        className: "font-sans text-2xl font-bold text-gray-800 p-4 ml-4 cursor-pointer border-b-2 border-transparent hover:border-red-700",
+        className: "text-2xl font-bold text-gray-800 p-4 ml-4 cursor-pointer border-b-2 border-transparent hover:border-red-700",
         onClick: (_arg1) => {
             dispatch(new Msg(2, new Page(0)));
         },
@@ -73,9 +73,9 @@ export function desktop_model(dispatch, model) {
     }, ...links(model, dispatch))));
 }
 
-export function navbar(model, dispatch) {
+export function navbar(dispatch, model) {
     return react.createElement("div", {
-        className: "z-50 fixed w-full glass bg-white shadow-lg",
+        className: "z-50 fixed w-full glass-dense bg-white bg-opacity-50 shadow-lg",
     }, mobile_menu(dispatch, model), desktop_model(dispatch, model));
 }
 
