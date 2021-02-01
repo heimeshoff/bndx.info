@@ -24,7 +24,8 @@ let bild =
 
 
 let links model dispatch =
-  [ "Kontakt" |> anchor dispatch  ]
+  [ "Portfolio" |> anchor dispatch
+    "Kontakt" |> anchor dispatch  ]
 
 
 let brand_logo dispatch = 

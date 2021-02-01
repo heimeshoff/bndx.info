@@ -10,12 +10,10 @@ module View =
 // TODO:
 // On-Click Ablum schließen ohn ePropagation
 // Daten über Textdateien laden
-// Font-sans always upper, font-serif always lower
-
 
   let cover dispatch (title:string) file = 
     div 
-      [ Class "group relative w-40 h-40 md:w-48 md:h-48 xl:w-64 xl:h-64 overflow-hidden cursor-pointer select-none"
+      [ Class "justify-self-center  group relative w-40 h-40 md:w-48 md:h-48 xl:w-64 xl:h-64 overflow-hidden cursor-pointer select-none"
         OnClick (fun e -> (Album_anzeigen title) |> dispatch )
       ]
       [
@@ -36,7 +34,7 @@ module View =
 
 
   let hero dispatch model =
-    div [ Class "relative w-full h-screen  overflow-hidden" ]
+    div [ Class "relative w-full h-screen overflow-hidden" ]
       [ 
         img [ Class "absolute w-full h-full object-cover"
               Src "img/hero.jpg" ]
@@ -51,20 +49,23 @@ module View =
 
 
   let albums dispatch model =
-    div [ Class " grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 xl:gap-8" ]
-      [ 
-        cover dispatch "Heimeshoff" "heimesstuff/cover/heimeshoff_it Kopie.jpg"
-        cover dispatch "StuffNThinkgs" "illustrationen_soltau/cover/soltau.jpg"
-        cover dispatch "StuffNThinkgs""layout_und_piktogramme/cover/Buch_S_B.jpg"
-        cover dispatch "StuffNThinkgs""heimesstuff/cover/heimeshoff_it Kopie.jpg"
-        cover dispatch "StuffNThinkgs""illustrationen_soltau/cover/soltau.jpg"
-        cover dispatch "StuffNThinkgs""layout_und_piktogramme/cover/Buch_S_B.jpg"
-        cover dispatch "StuffNThinkgs""heimesstuff/cover/heimeshoff_it Kopie.jpg"
-        cover dispatch "StuffNThinkgs""illustrationen_soltau/cover/soltau.jpg"
-        cover dispatch "StuffNThinkgs""layout_und_piktogramme/cover/Buch_S_B.jpg"
-        cover dispatch "StuffNThinkgs""illustrationen_soltau/cover/soltau.jpg"
-        cover dispatch "StuffNThinkgs""layout_und_piktogramme/cover/Buch_S_B.jpg"
-      ] 
+    div [ Class "pt-20 xl:pt-32 flex flex-col items-center"; Id "portfolio" ]
+      [
+        div [ Class "grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 " ]
+          [ 
+            cover dispatch "Heimeshoff" "heimesstuff/cover/heimeshoff_it Kopie.jpg"
+            cover dispatch "StuffNThinkgs" "illustrationen_soltau/cover/soltau.jpg"
+            cover dispatch "StuffNThinkgs""layout_und_piktogramme/cover/Buch_S_B.jpg"
+            cover dispatch "StuffNThinkgs""heimesstuff/cover/heimeshoff_it Kopie.jpg"
+            cover dispatch "StuffNThinkgs""illustrationen_soltau/cover/soltau.jpg"
+            cover dispatch "StuffNThinkgs""layout_und_piktogramme/cover/Buch_S_B.jpg"
+            cover dispatch "StuffNThinkgs""heimesstuff/cover/heimeshoff_it Kopie.jpg"
+            cover dispatch "StuffNThinkgs""illustrationen_soltau/cover/soltau.jpg"
+            cover dispatch "StuffNThinkgs""layout_und_piktogramme/cover/Buch_S_B.jpg"
+            cover dispatch "StuffNThinkgs""illustrationen_soltau/cover/soltau.jpg"
+            cover dispatch "StuffNThinkgs""layout_und_piktogramme/cover/Buch_S_B.jpg"
+          ] 
+      ]
 
   let album dispatch model =
     match model.album with

@@ -1,7 +1,7 @@
 import * as react from "react";
 import { Page, Msg } from "../Types.fs.js";
-import { ofSeq, singleton } from "../.fable/fable-library.3.0.1/List.js";
-import { empty, singleton as singleton_1, append, delay } from "../.fable/fable-library.3.0.1/Seq.js";
+import { ofSeq, ofArray } from "../.fable/fable-library.3.0.1/List.js";
+import { empty, singleton, append, delay } from "../.fable/fable-library.3.0.1/Seq.js";
 
 export function anchor(dispatch, label) {
     return react.createElement("div", {
@@ -23,7 +23,7 @@ export const bild = react.createElement("div", {
 }, "Demns "));
 
 export function links(model, dispatch) {
-    return singleton(anchor(dispatch, "Kontakt"));
+    return ofArray([anchor(dispatch, "Portfolio"), anchor(dispatch, "Kontakt")]);
 }
 
 export function brand_logo(dispatch) {
@@ -56,9 +56,9 @@ export function toggle_menu(dispatch) {
 export function mobile_menu(dispatch, model) {
     return react.createElement("div", {
         className: "lg:hidden",
-    }, ...ofSeq(delay(() => append(singleton_1(react.createElement("div", {
+    }, ...ofSeq(delay(() => append(singleton(react.createElement("div", {
         className: "flex flex-row items-center justify-between",
-    }, brand_logo(dispatch), toggle_menu(dispatch))), delay(() => (model.menu_open ? singleton_1(react.createElement("div", {
+    }, brand_logo(dispatch), toggle_menu(dispatch))), delay(() => (model.menu_open ? singleton(react.createElement("div", {
         className: "flex flex-col items-center space-y-4 pl-4",
     }, ...links(model, dispatch))) : empty()))))));
 }
