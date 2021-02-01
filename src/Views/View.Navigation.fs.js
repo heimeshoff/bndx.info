@@ -5,7 +5,7 @@ import { empty, singleton, append, delay } from "../.fable/fable-library.3.0.1/S
 
 export function anchor(dispatch, label) {
     return react.createElement("div", {
-        className: "p-4 text-2xl w-full lg:w-auto border-b-2 border-transparent hover:border-red-700 cursor-pointer",
+        className: "p-4 text-2xl w-full lg:w-auto border-b-2 border-transparent hover:border-purple-400 cursor-pointer",
         onClick: (e) => {
             e.stopPropagation();
             dispatch(new Msg(3, label.toLocaleLowerCase()));
@@ -28,7 +28,7 @@ export function links(model, dispatch) {
 
 export function brand_logo(dispatch) {
     return react.createElement("div", {
-        className: "text-2xl font-bold text-gray-800 p-4 ml-4 cursor-pointer border-b-2 border-transparent hover:border-red-700",
+        className: "text-2xl font-bold text-gray-800 p-4 ml-4 cursor-pointer border-b-2 border-transparent hover:border-purple-400",
         onClick: (_arg1) => {
             dispatch(new Msg(2, new Page(0)));
         },
@@ -39,7 +39,7 @@ export function brand_logo(dispatch) {
 
 export function toggle_menu(dispatch) {
     return react.createElement("button", {
-        className: "flex-no-shrink flex items-center m-4 px-3 py-2 border-2 rounded-md hover:text-red-700 hover:border-red-700 hover:text-blue-light hover:border-blue-light focus:outline-none",
+        className: "flex-no-shrink flex items-center m-4 px-3 py-3 rounded-full bg-gray-500 bg-opacity-25 hover:bg-purple-200 hover:bg-opacity-25 focus:outline-none",
         onClick: (e) => {
             e.stopPropagation();
             dispatch(new Msg(0));
