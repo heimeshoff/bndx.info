@@ -11,6 +11,12 @@ module View =
 // On-Click Ablum schließen ohn ePropagation
 // Daten über Textdateien laden
 
+  let image album filename = 
+    img 
+      [ Class "w-40 md:w-48 xl:w-64 object-cover shadow-lg px-2 pt-2 pb-6 border border-gray-100"
+        Src (sprintf "img/%s/sub_page/%s" album filename ) ]
+
+
   let cover dispatch (title:string) file = 
     div 
       [ Class "justify-self-center  group relative w-40 h-40 md:w-48 md:h-48 xl:w-64 xl:h-64 overflow-hidden cursor-pointer select-none"
@@ -46,10 +52,28 @@ module View =
             ["Vielleicht ja auch bald für sie?" |> ofString ] |> div [ Class "text-xl text-right" ]
           ]              
       ]
+      
+
+  let album dispatch model =
+    let trans = match model.album with | Some album -> "translate-x-0" | None -> "translate-x-full"
+
+    div [ Class (sprintf "pt-20 xl:pt-32 flex flex-col items-center transform %s transition-transform duration-500 ease-in-out" trans); Id "portfolio" ]
+      [
+        div [ Class "flex flex-row flex-wrap justify-around items-center" ]
+          [ 
+            image "heimesstuff" "1.png"
+            image "heimesstuff" "2.png"
+            image "heimesstuff" "shirt.jpg"
+            image "heimesstuff" "3.png"
+            image "heimesstuff" "4.png"
+          ] 
+      ]
 
 
   let albums dispatch model =
-    div [ Class "pt-20 xl:pt-32 flex flex-col items-center"; Id "portfolio" ]
+    let verschieben_cover = match model.album with | Some album -> "-translate-x-full"  | None -> "translate-x-0"
+ 
+    div [ Class (sprintf "relative w-full pt-20 xl:pt-32 flex flex-col items-center transform %s transition-transform duration-500 ease-in-out" verschieben_cover); Id "portfolio" ]
       [
         div [ Class "grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 xl:gap-8 " ]
           [ 
@@ -65,37 +89,32 @@ module View =
             cover dispatch "StuffNThinkgs""illustrationen_soltau/cover/soltau.jpg"
             cover dispatch "StuffNThinkgs""layout_und_piktogramme/cover/Buch_S_B.jpg"
           ] 
-      ]
 
-  let album dispatch model =
-    match model.album with
-    | Some album -> 
-        div [ Class "absolute inset-0 bg-gray-500 bg-opacity-25 glass-dense flex flex-col items-center justify-center" 
-              OnClick (fun e -> Album_schliessen |> dispatch) ]
+        div [ Class "absolute z-10 right-0 inset-y-0 w-16 -mr-16 shadow-xl border-r border-gray-100 cursor-pointer" 
+              OnClick (fun _ -> Album_schliessen |> dispatch )]
+          []
+
+        div [ Class (sprintf "absolute w-full transform %s transition-transform duration-500 ease-in-out" "translate-x-full") ]
           [
-            div [ Class "bg-white rounded-md shadow-xl p-8 h-full mt-24 mb-24" ]
-              [
-                div [ Class "w-full text-center font-sans font-bold text-xl text-gray-600" ]
-                  [ album |> ofString ]
-                div [ Class "mt-4 grid grid-cols-2 md:grid-cols-3 gap-4 " ]
+            div [ Class "flex flex-col items-center"]
+              [ 
+                div [ Class "flex flex-row flex-wrap space-x-4 space-y-4 justify-center items-center" ]
                   [ 
-                    cover dispatch "Heimeshoff" "heimesstuff/cover/heimeshoff_it Kopie.jpg"
-                    cover dispatch "Heimeshoff" "heimesstuff/cover/heimeshoff_it Kopie.jpg"
-                    cover dispatch "Heimeshoff" "heimesstuff/cover/heimeshoff_it Kopie.jpg"
-                    cover dispatch "Heimeshoff" "heimesstuff/cover/heimeshoff_it Kopie.jpg"
-                    cover dispatch "Heimeshoff" "heimesstuff/cover/heimeshoff_it Kopie.jpg"
-                  ]                       
+                    image "heimesstuff" "1.png"
+                    image "heimesstuff" "2.png"
+                    image "heimesstuff" "shirt.jpg"
+                    image "heimesstuff" "3.png"
+                    image "heimesstuff" "4.png"
+                  ] 
               ]
           ]
-    | None -> nothing
+      ]
 
 
   let render (model:Model) dispatch =  
-    div [ Class "relative font-sans"; Id "top"
+    div [ Class "relative overflow-x-hidden font-sans"; Id "top"
           OnClick (fun _ -> Clicked_Anywhere |> dispatch )]    
       [ 
-        album dispatch model 
-
         navbar dispatch model 
         hero dispatch model 
         albums dispatch model 
