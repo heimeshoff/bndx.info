@@ -71,7 +71,7 @@ let desktop_model dispatch model =
 
 
 let navbar dispatch (model:Model) =
-  div [ Class "z-50 fixed w-full glass-dense bg-white bg-opacity-50 shadow-lg" ]
+  div [ Class "z-40 fixed w-full glass-dense bg-white bg-opacity-50 shadow-lg" ]
     [ 
       mobile_menu dispatch model 
       desktop_model dispatch model 

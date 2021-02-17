@@ -13,22 +13,22 @@ module View =
 
   let image album filename = 
     img 
-      [ Class "w-40 md:w-48 xl:w-64 object-cover shadow-lg px-2 pt-2 pb-6 border border-gray-100"
+      [ Class "w-full md:w-48 lg:w-56 xl:w-64 object-cover shadow-lg m-4 lg:m-6 xl:m-8 border border-gray-100"
         Src (sprintf "img/%s/sub_page/%s" album filename ) ]
 
 
   let cover dispatch (title:string) file = 
     div 
-      [ Class "justify-self-center  group relative w-40 h-40 md:w-48 md:h-48 xl:w-64 xl:h-64 overflow-hidden cursor-pointer select-none"
+      [ Class "justify-self-center group relative w-36 h-36 md:w-48 md:h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64 overflow-hidden cursor-pointer select-none"
         OnClick (fun e -> (Album_anzeigen title) |> dispatch )
       ]
       [
         div 
           [ Class "transform -translate-y-20 md:-translate-y-24 xl:-translate-y-32 group-hover:translate-y-0 transition-transform
-                   absolute top-0 w-full h-20 md:h-24 xl:h-32 bg-gray-50 bg-opacity-60 glass-light flex flex-col-reverse items-center " ] []
+                   absolute top-0 w-full h-20 md:h-24 lg:h-28 xl:h-32 bg-gray-50 bg-opacity-60 glass-light flex flex-col-reverse items-center " ] []
 
         div 
-          [ Class "absolute bottom-0  w-full h-20 md:h-24 xl:h-32 p-4 bg-gray-100
+          [ Class "absolute bottom-0  w-full h-20 md:h-24 lg:h-28 xl:h-32 p-4 bg-gray-100
                    font-bold text-xl text-gray-600 text-center
                    transform translate-y-20 md:translate-y-24 xl:translate-y-32 group-hover:translate-y-0 transition-transform duration-200 ease-in-out"]
               [ title.ToUpper() |> ofString]                 
@@ -71,11 +71,9 @@ module View =
 
 
   let albums dispatch model =
-    let verschieben_cover = match model.album with | Some album -> "-translate-x-full"  | None -> "translate-x-0"
- 
-    div [ Class (sprintf "relative w-full pt-20 xl:pt-32 flex flex-col items-center transform %s transition-transform duration-500 ease-in-out" verschieben_cover); Id "portfolio" ]
+    div [ Class "relative w-full py-20 xl:py-32 flex flex-col items-center"; Id "portfolio" ]
       [
-        div [ Class "grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 xl:gap-8 " ]
+        div [ Class "grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-4 lg:gap-6 xl:gap-8 " ]
           [ 
             cover dispatch "Heimeshoff" "heimesstuff/cover/heimeshoff_it Kopie.jpg"
             cover dispatch "StuffNThinkgs" "illustrationen_soltau/cover/soltau.jpg"
@@ -89,32 +87,49 @@ module View =
             cover dispatch "StuffNThinkgs""illustrationen_soltau/cover/soltau.jpg"
             cover dispatch "StuffNThinkgs""layout_und_piktogramme/cover/Buch_S_B.jpg"
           ] 
+      ]
 
-        div [ Class "absolute z-10 right-0 inset-y-0 w-16 -mr-16 shadow-xl border-r border-gray-100 cursor-pointer" 
-              OnClick (fun _ -> Album_schliessen |> dispatch )]
-          []
 
-        div [ Class (sprintf "absolute w-full transform %s transition-transform duration-500 ease-in-out" "translate-x-full") ]
+  let album_overlay dispatch model =
+    let transformation =  
+      match model.album with
+      | Some a -> "translate-y-0"
+      | None -> "translate-y-full"
+
+    div [ Class (sprintf "fixed z-50 h-screen w-screen transform transition-transform duration-300 ease-out %s" transformation) ]
+      [
+
+        div [ Class "h-full w-full bg-gray-50 overflow-y-scroll overscroll-none" ]
           [
-            div [ Class "flex flex-col items-center"]
+            div [ Class "sticky top-0 h-16 shadow-lg group cursor-pointer bg-white w-full flex items-center justify-center"
+                  OnClick (fun _ -> Album_schliessen |> dispatch )]
               [ 
-                div [ Class "flex flex-row flex-wrap space-x-4 space-y-4 justify-center items-center" ]
-                  [ 
-                    image "heimesstuff" "1.png"
-                    image "heimesstuff" "2.png"
-                    image "heimesstuff" "shirt.jpg"
-                    image "heimesstuff" "3.png"
-                    image "heimesstuff" "4.png"
-                  ] 
+                div [ Class "flex items-center justify-center w-12 h-12 rounded-full bg-gray-200 group-hover:bg-gray-100"]
+                  [
+                    img [ Src "./img/doubledown.svg"
+                          Class "w-6 h-6"
+                        ]
+                  ]
               ]
+
+            div [ Class "py-8 px-4 md:py-10 md:px-8 lg:py-12 lg:px-10 xl:py-16 xl:px-12  flex flex-row flex-wrap justify-center items-center" ]
+              [ 
+                image "heimesstuff" "1.png"
+                image "heimesstuff" "2.png"
+                image "heimesstuff" "shirt.jpg"
+                image "heimesstuff" "3.png"
+                image "heimesstuff" "4.png"
+              ] 
           ]
       ]
 
 
   let render (model:Model) dispatch =  
-    div [ Class "relative overflow-x-hidden font-sans"; Id "top"
+    div [ Class "relative font-sans h-screen overflow-y-scroll overflow-x-hidden"; Id "top"
           OnClick (fun _ -> Clicked_Anywhere |> dispatch )]    
       [ 
+        album_overlay dispatch model
+
         navbar dispatch model 
         hero dispatch model 
         albums dispatch model 

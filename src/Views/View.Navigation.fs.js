@@ -75,7 +75,7 @@ export function desktop_model(dispatch, model) {
 
 export function navbar(dispatch, model) {
     return react.createElement("div", {
-        className: "z-50 fixed w-full glass-dense bg-white bg-opacity-50 shadow-lg",
+        className: "z-40 fixed w-full glass-dense bg-white bg-opacity-50 shadow-lg",
     }, mobile_menu(dispatch, model), desktop_model(dispatch, model));
 }
 

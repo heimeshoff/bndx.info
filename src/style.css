@@ -4,6 +4,7 @@
 
 @tailwind utilities;
 
+
 .glass-light {
   backdrop-filter: blur( 3.0px );
   -webkit-backdrop-filter: blur( 3.0px );
