@@ -101,7 +101,7 @@ module View =
 
         div [ Class "h-full w-full bg-gray-50 overflow-y-scroll overscroll-none" ]
           [
-            div [ Class "sticky top-0 h-16 shadow-lg group cursor-pointer bg-white w-full flex items-center justify-center"
+            div [ Class "sticky top-0 h-20 shadow-lg group cursor-pointer bg-white w-full flex items-center justify-center"
                   OnClick (fun _ -> Album_schliessen |> dispatch )]
               [ 
                 div [ Class "flex items-center justify-center w-12 h-12 rounded-full bg-gray-200 group-hover:bg-gray-100"]

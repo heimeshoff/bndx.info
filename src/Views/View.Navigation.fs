@@ -47,7 +47,7 @@ let toggle_menu dispatch =
 let mobile_menu dispatch model = 
   div [ Class "lg:hidden" ]
     [
-      div [ Class "flex flex-row items-center justify-between"]
+      div [ Class "h-20 flex flex-row items-center justify-between"]
         [
           brand_logo dispatch
           toggle_menu dispatch 
@@ -61,7 +61,7 @@ let mobile_menu dispatch model =
 let desktop_model dispatch model = 
   div [ Class "hidden lg:block w-full" ]
     [
-      div [ Class "flex flex-row justify-between" ]
+      div [ Class "h-20 flex flex-row justify-between" ]
         [
           brand_logo dispatch
           div [ Class "hidden lg:flex flex-row items-center space-x-4 pr-8" ]    

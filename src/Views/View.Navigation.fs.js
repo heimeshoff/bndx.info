@@ -57,7 +57,7 @@ export function mobile_menu(dispatch, model) {
     return react.createElement("div", {
         className: "lg:hidden",
     }, ...ofSeq(delay(() => append(singleton(react.createElement("div", {
-        className: "flex flex-row items-center justify-between",
+        className: "h-20 flex flex-row items-center justify-between",
     }, brand_logo(dispatch), toggle_menu(dispatch))), delay(() => (model.menu_open ? singleton(react.createElement("div", {
         className: "flex flex-col items-center space-y-4 pl-4",
     }, ...links(model, dispatch))) : empty()))))));
@@ -67,7 +67,7 @@ export function desktop_model(dispatch, model) {
     return react.createElement("div", {
         className: "hidden lg:block w-full",
     }, react.createElement("div", {
-        className: "flex flex-row justify-between",
+        className: "h-20 flex flex-row justify-between",
     }, brand_logo(dispatch), react.createElement("div", {
         className: "hidden lg:flex flex-row items-center space-x-4 pr-8",
     }, ...links(model, dispatch))));
