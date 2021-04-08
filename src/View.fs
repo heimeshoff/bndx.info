@@ -104,10 +104,10 @@ module View =
             div [ Class "sticky top-0 h-20 shadow-lg group cursor-pointer bg-white w-full flex items-center justify-center"
                   OnClick (fun _ -> Album_schliessen |> dispatch )]
               [ 
-                div [ Class "flex items-center justify-center w-12 h-12 rounded-full bg-gray-200 group-hover:bg-gray-100"]
+                div [ Class "flex items-center justify-center rounded-xl bg-gray-50"]
                   [
-                    img [ Src "./img/doubledown.svg"
-                          Class "w-6 h-6"
+                    img [ Src "./img/close.svg"
+                          Class "w-24 h-24"
                         ]
                   ]
               ]

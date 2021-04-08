@@ -39,18 +39,15 @@ export function brand_logo(dispatch) {
 
 export function toggle_menu(dispatch) {
     return react.createElement("button", {
-        className: "flex-no-shrink flex items-center m-4 px-3 py-3 rounded-full bg-gray-500 bg-opacity-25 hover:bg-purple-200 hover:bg-opacity-25 focus:outline-none",
+        className: "flex-no-shrink mr-4 flex items-center  focus:outline-none",
         onClick: (e) => {
             e.stopPropagation();
             dispatch(new Msg(0));
         },
-    }, react.createElement("svg", {
-        className: "fill-current h-4 w-4",
-        viewBox: "0 0 20 20",
-        xmlns: "http://www.w3.org/2000/svg",
-    }, react.createElement("path", {
-        d: "M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z",
-    })));
+    }, react.createElement("img", {
+        src: "./img/hamberder.svg",
+        className: "h-20 w-20",
+    }));
 }
 
 export function mobile_menu(dispatch, model) {

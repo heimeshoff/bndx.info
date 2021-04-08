@@ -38,10 +38,12 @@ let brand_logo dispatch =
 
 
 let toggle_menu dispatch = 
-  button [ Class "flex-no-shrink flex items-center m-4 px-3 py-3 rounded-full bg-gray-500 bg-opacity-25 hover:bg-purple-200 hover:bg-opacity-25 focus:outline-none"
+  button [ Class "flex-no-shrink mr-4 flex items-center  focus:outline-none"
            OnClick (fun e -> e.stopPropagation() ; Toggle_menu |> dispatch ) ]
-    [ svg [ Class "fill-current h-4 w-4" ; HTMLAttr.Custom ("viewBox", "0 0 20 20") ; HTMLAttr.Custom ("xmlns", "http://www.w3.org/2000/svg") ]
-        [ path [ HTMLAttr.Custom ("d", "M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z") ] [ ] ] ] 
+    [ 
+      img [ Src "./img/hamberder.svg"
+            Class "h-20 w-20" ]
+    ] 
 
 
 let mobile_menu dispatch model = 
